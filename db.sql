@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS admins (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    code VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    status BOOLEAN NOT NULL,
+    quantity INTEGER NOT NULL,
+    description TEXT NOT NULL
+);

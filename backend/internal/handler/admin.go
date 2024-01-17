@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"fantastic-fortnight/backend/model"
-	"fantastic-fortnight/backend/service"
+	"fantastic-fortnight/backend/internal/model"
+	"fantastic-fortnight/backend/internal/service"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"

@@ -1,13 +1,13 @@
 package service
 
 import (
-	"fantastic-fortnight/backend/model"
-	"fantastic-fortnight/backend/repository"
+	"fantastic-fortnight/backend/internal/model"
+	"fantastic-fortnight/backend/internal/repository"
 	"os"
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
+	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

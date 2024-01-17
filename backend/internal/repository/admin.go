@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"fantastic-fortnight/backend/model"
+	"fantastic-fortnight/backend/internal/model"
 
 	"gorm.io/gorm"
 )

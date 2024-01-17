@@ -1,9 +1,9 @@
 package vercel
 
 import (
-	"fantastic-fortnight/backend/handler"
-	"fantastic-fortnight/backend/repository"
-	"fantastic-fortnight/backend/service"
+	"fantastic-fortnight/backend/internal/handler"
+	"fantastic-fortnight/backend/internal/repository"
+	"fantastic-fortnight/backend/internal/service"
 	"fmt"
 	"net/http"
 	"os"
@@ -28,6 +28,10 @@ func init() {
 	adminService := service.NewAdminService(db, adminRepo)
 	adminHandler := handler.NewAdminHandler(adminService)
 
+	productRepo := repository.NewProductRepository()
+	productService := service.NewProductService(db, productRepo)
+	productHandler := handler.NewProductHandler(productService)
+
 	router = fiber.New(fiber.Config{
 		ErrorHandler: func(c *fiber.Ctx, err error) error {
 			errFiber, ok := err.(*fiber.Error)
@@ -51,6 +55,12 @@ func init() {
 	routerGroup.Post("/admins", adminHandler.Create)
 	routerGroup.Put("/admins/:id", adminHandler.Update)
 	routerGroup.Delete("/admins/:id", adminHandler.Delete)
+
+	routerGroup.Get("/products", productHandler.GetAll)
+	routerGroup.Get("/products/:id", productHandler.Get)
+	routerGroup.Post("/products", productHandler.Create)
+	routerGroup.Put("/products/:id", productHandler.Update)
+	routerGroup.Delete("/products/:id", productHandler.Delete)
 
 	routerAdaptor = adaptor.FiberApp(router)
 }
